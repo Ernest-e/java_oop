@@ -5,6 +5,10 @@ public class Crossbowman extends Shooter {
         super(name, 105, 35, 25, 45, 30);
     }
     
+    @Override
+    public String getInfo() {
+        return "Crossbowman " + name;
+    }
     
 }
     

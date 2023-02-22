@@ -9,9 +9,6 @@ public abstract class Warrior extends Human {
         this.blades = blades;
     }
     
-    public String getInfo() {
-        return String.format("%s  blade nums: %d", super.getInfo(), this.blades);
-    }
 
 }
 

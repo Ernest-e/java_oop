@@ -8,8 +8,5 @@ public abstract class Shooter extends Human {
         this.weapons = weapons;
     }
     
-    public String getInfo() {
-        return String.format("%s  weapons: %d", super.getInfo(), this.weapons);
-    }
 
 }

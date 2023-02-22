@@ -6,5 +6,10 @@ public class Wizard extends Magician{
         super(name, 80, 40, 35, 10, 100, 15);
     }
     
+    @Override
+    public String getInfo() {
+        return "Wizard " + name;
+    }
+    
 
 }

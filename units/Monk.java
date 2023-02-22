@@ -6,4 +6,9 @@ public class Monk extends Magician {
         super(name, 75, 15, 35, 25, 100, 40);
     }
     
+    @Override
+    public String getInfo() {
+        return "Monk " + name;
+    }
+
 }

@@ -1,6 +1,6 @@
 package oop_java.units;
 
-public abstract class Human {
+public abstract class Human implements GameInterface {
     protected String name;
     protected int hp;
     protected int speed;
@@ -15,11 +15,14 @@ public abstract class Human {
         this.speed = speed;
     }
 
-    public String getInfo() {
-        return String.format("Name: %s  Hp: %d  Speed: %d Type: %s",
-                this.name, this.hp, this.speed, this.getClass().getSimpleName());
-    }
+    @Override
+    public void step(){}
     
+    @Override
+    public String getInfo() {
+        return ("Null");
+    }
+
 }
 
 

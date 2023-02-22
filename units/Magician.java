@@ -10,8 +10,6 @@ public abstract class Magician extends Human {
         this.healing = healing;
     }
     
-    public String getInfo() {
-        return String.format("%s  mana: %d", super.getInfo(), this.mana);
-    }
+
 
 }
