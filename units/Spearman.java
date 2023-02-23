@@ -2,13 +2,9 @@ package oop_java.units;
 
 public class Spearman extends Warrior {
     public Spearman (String name){
-        super(name, 130, 25, 15, 40, 1);
+        super(name, 10, 4, 1, 3, 4, 5);
     }
 
-    @Override
-    public String getInfo() {
-        return "Spearman " + name;
-    }
-    
+
     
 }

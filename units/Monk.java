@@ -3,12 +3,8 @@ package oop_java.units;
 public class Monk extends Magician {
     
     public Monk (String name){
-        super(name, 75, 15, 35, 25, 100, 40);
+        super(name, 30, 12, -4, -4, 5, 7, 1);
     }
-    
-    @Override
-    public String getInfo() {
-        return "Monk " + name;
-    }
+
 
 }

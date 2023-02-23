@@ -2,12 +2,12 @@ package oop_java.units;
 
 public class Sniper extends Shooter {
     public Sniper (String name){
-        super(name, 90, 25, 35, 35, 20);
+        super(name, 15, 12, 8, 10, 9, 10, 32);
     }
     
+
     @Override
     public String getInfo() {
-        return "Sniper " + name;
+        return String.format("%s  shoots: %d", super.getInfo(), this.shoots);
     }
-    
 }

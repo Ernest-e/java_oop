@@ -3,13 +3,9 @@ package oop_java.units;
 public class Wizard extends Magician{
 
     public Wizard (String name){
-        super(name, 80, 40, 35, 10, 100, 15);
+        super(name, 30, 17, -5, -5, 9, 12, 1);
     }
     
-    @Override
-    public String getInfo() {
-        return "Wizard " + name;
-    }
-    
+
 
 }
