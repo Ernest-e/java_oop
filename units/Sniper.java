@@ -1,8 +1,8 @@
 package oop_java.units;
 
 public class Sniper extends Shooter {
-    public Sniper (String name){
-        super(name, 15, 12, 8, 10, 9, 10, 32);
+    public Sniper (String name, int xCoord, int yCoord, int team){
+        super(name, 15, 12, 8, 10, 9, 10, 32, xCoord, yCoord, team);
     }
     
 

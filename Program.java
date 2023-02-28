@@ -20,10 +20,8 @@ public class Program {
         List <Human> blue = new ArrayList<>();
         List <Human> red = new ArrayList<>();
 
-        for (int i = 0; i < 10; i ++){
-            makePersonage(blue, 1, 5);
-            makePersonage(red, 4, 8);
-        }
+        makeTeam(red, 10, 1, 5);
+        makeTeam(blue, 10, 5, 9);
 
         List <Human> heroes = new ArrayList<>();
         heroes.addAll(red);
@@ -45,7 +43,15 @@ public class Program {
         System.out.println("all sorted by speed:");
         heroes.forEach(n -> System.out.println(n.getInfo()));
 
+
+        
+
     }
+
+
+        
+
+
 
 
         
@@ -53,31 +59,36 @@ public class Program {
             return String.valueOf(Names.values()[new Random().nextInt(Names.values().length)]);
         }
 
-    public static void makePersonage(List<Human> list, int minnum, int maxnum){
-        switch (new Random().nextInt(minnum, maxnum)) {
-            case 1:
-                list.add(new Robber(getName()));
-                break;
-            case 2:
-                list.add(new Sniper(getName()));
-                break;
-            case 3:
-                list.add(new Wizard(getName()));
-                break;
-            case 4:
-                list.add(new Peasant(getName()));
-                break;
-            case 5:
-                list.add(new Spearman(getName()));
-                break;
-            case 6:
-                list.add(new Crossbowman(getName()));
-                break;
-            case 7:
-                list.add(new Monk(getName()));
-                break;
-            default:
-                break;
+    public static void makeTeam(List<Human> list, int units, int minnum, int maxnum){
+        for (int i = 0; i < units; i ++){
+            switch (new Random().nextInt(minnum, maxnum)) {
+                case 1:
+                    list.add(new Robber(getName(), 0, i+1, 1));
+                    break;
+                case 2:
+                    list.add(new Sniper(getName(),  0, i+1, 1));
+                    break;
+                case 3:
+                    list.add(new Wizard(getName(),  0, i+1, 1));
+                    break;
+                case 4:
+                    list.add(new Peasant(getName(),  0, i+1, 1));
+                    break;
+                case 5:
+                    list.add(new Spearman(getName(), 10, i+1, 2 ));
+                    break;
+                case 6:
+                    list.add(new Crossbowman(getName(), 10, i+1, 2));
+                    break;
+                case 7:
+                    list.add(new Monk(getName(), 10, i+1, 2));
+                    break;
+                case 8:
+                    list.add(new Peasant(getName(),  10, i+1, 2));
+                    break;
+                default:
+                    break;
+            }
         }
     }
     
