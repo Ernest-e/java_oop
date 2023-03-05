@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 import oop_java.units.Crossbowman;
 import oop_java.units.Human;
@@ -29,7 +30,7 @@ public class Program {
         heroes.sort(new Comparator<Human> () {
             @Override
             public int compare (Human o1, Human o2){
-                if (o2.getSpeed() == o1.getSpeed()) return o2.getHp()-o1.getHp();
+                if (o2.getSpeed() == o1.getSpeed()) return (int)o2.getHp()-(int)o1.getHp();
                 else return o2.getSpeed() - o1.getSpeed();
             }
         });
@@ -43,9 +44,22 @@ public class Program {
         System.out.println("all sorted by speed:");
         heroes.forEach(n -> System.out.println(n.getInfo()));
 
+        System.out.println("-----------------");
+        System.out.println("BATTLE");
+
+        Scanner input = new Scanner(System.in);
+        String flag = "";
+        while (flag.equals("")){
+            for (Human human : heroes) {
+                if (human.team ==1) human.step(red, blue);
+                else human.step(blue, red);
+            }
+            heroes.forEach(n-> System.out.println(n.getInfo()));
+            flag = input.nextLine();
+        }
+        input.close();
 
         
-
     }
 
 

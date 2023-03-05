@@ -4,7 +4,8 @@ import java.util.List;
 
 public abstract class Human implements GameInterface {
     protected String name;
-    protected int hp;
+    protected int maxHp;
+    protected double hp;
     protected int speed;
     protected int minDamage;
     protected int defense;
@@ -12,10 +13,12 @@ public abstract class Human implements GameInterface {
     protected int attack;
     protected int xCoord;
     protected int yCoord;
-    protected int team;
+    public int team;
+    protected String state;
 
-    public Human (String name, int hp, int attack, int minDamage, int maxDamage, int defense, int speed, int xCoord, int yCoord, int team) {
+    public Human (String name, int maxHp, double hp, int attack, int minDamage, int maxDamage, int defense, int speed, int xCoord, int yCoord, int team) {
         this.name = name;
+        this.maxHp = maxHp;
         this.hp = hp;
         this.minDamage = minDamage;
         this.maxDamage = maxDamage;
@@ -25,22 +28,23 @@ public abstract class Human implements GameInterface {
         this.xCoord = xCoord;
         this.yCoord = yCoord;
         this.team = team;
+        this.state = "Stand";
     }
 
     @Override
-    public void step(List<Human> allHeroes){}
+    public void step(List<Human> friends, List<Human> enemies){}
     
     @Override
     public String getInfo() {
-        return String.format("Name: %s  Hp: %d  Attack: %d  minDamage: %d  maxDamage: %d  defense: %d  Speed: %d Type: %s  xCoord: %s  yCoord: %s",
-                this.name, this.hp, this.attack, this.minDamage, this.maxDamage, this.defense, this.speed, this.getClass().getSimpleName(), this.xCoord, this.yCoord);
+        return String.format("Name: %s  Hp: %f  Attack: %d  minDamage: %d  maxDamage: %d  defense: %d  Speed: %d Type: %s  xCoord: %s  yCoord: %s  team: %d",
+                this.name, this.hp, this.attack, this.minDamage, this.maxDamage, this.defense, this.speed, this.getClass().getSimpleName(), this.xCoord, this.yCoord, this.team);
     }
 
     public int getSpeed(){
         return this.speed;
     }
 
-    public int getHp(){
+    public double getHp(){
         return this.hp;
     }
 
@@ -58,10 +62,18 @@ public abstract class Human implements GameInterface {
             }
         }
         return nearestHero;
+    }
 
-
+    protected void getDamage(float damage){
+        this.hp -= damage;
+        if (hp <= 0) {
+            hp = 0;
+            state = "Die";
+        }
+        if (hp >= maxHp) hp = maxHp;
     }
 }
+
 
 
 

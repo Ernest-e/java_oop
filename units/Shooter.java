@@ -1,44 +1,33 @@
 package oop_java.units;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Shooter extends Human {
     protected int shoots;
 
-    public Shooter (String name, int hp, int attack, int minDamage, int maxDamage, int speed, int defense, int shoots, int xCoord, int yCoord, int team){
-        super(name, hp, attack, minDamage, maxDamage, defense, speed, xCoord, yCoord, team);
+    public Shooter (String name, int maxHp, double hp, int attack, int minDamage, int maxDamage, int speed, int defense, int shoots, int xCoord, int yCoord, int team){
+        super(name, maxHp, hp, attack, minDamage, maxDamage, defense, speed, xCoord, yCoord, team);
         this.shoots = shoots;
     }
 
     @Override
-    public void step (List<Human> allHeroes) {
-        if (this.hp == 0) {
-            System.out.println("Лучник мертв");
-        }
-        else if (this.shoots == 0){
-            System.out.println("Стрелы закончились");
-        }
+    public void step (List<Human> friends, List<Human> enemies) {
+        if (this.state.equals("Die") || this.shoots == 0) return;
+        
         else {
-            List<Human> enemies = new ArrayList<>();
-            List<Human> friends = new ArrayList<>();
-            for (Human human : allHeroes) {
-                if (this.team == human.team){
-                    friends.add(human);
-                }
-                else {enemies.add (human);}
-            }
             Human enemy = nearestHero(this.xCoord, this.yCoord, enemies);
-            System.out.println("nearest enemy" + enemy.getInfo());
-            enemy.hp -= this.minDamage;
+            float damage = (enemy.defense - this.attack)>0 ? this.minDamage : (enemy.defense - this.attack) < 0 ? this.maxDamage : (this.minDamage + this.maxDamage)/2;
+            enemy.getDamage(damage);
 
             int shootDecrease = 1; 
             for (Human human : friends) {
-                if (human.getClass().getSimpleName().equals("Peasant")){
+                if (human.getClass().getSimpleName().equals("Peasant") && human.state.equals("Stand")){
+                    human.state = "Busy";
                     shootDecrease = 0;
+                    return;
                 }
-            if (shootDecrease == 1) {this.shoots-=1;}
             }
+            if (shootDecrease == 1) {this.shoots--;}
 
         }
 
