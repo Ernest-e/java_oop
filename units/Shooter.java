@@ -33,4 +33,16 @@ public abstract class Shooter extends Human {
 
     }
 
+
+    @Override
+    public String toString() {
+        return name +
+                " H:" + Math.round(hp) +
+                " D:" + defense +
+                " A:" + attack +
+                " Dmg:" + Math.round(Math.abs((minDamage+maxDamage)/2)) +
+                " Shots:" + shoots + " " +
+                state;
+    }
+
 }

@@ -16,16 +16,20 @@ import oop_java.units.Spearman;
 import oop_java.units.Wizard;
 
 public class Program {
+
+    public static List <Human> blue = new ArrayList<>();
+    public static List <Human> green = new ArrayList<>();
+    public static List <Human> heroes = new ArrayList<>();
+
     public static void main(String[] args) {
   
-        List <Human> blue = new ArrayList<>();
-        List <Human> red = new ArrayList<>();
 
-        makeTeam(red, 10, 1, 5);
+
+        makeTeam(green, 10, 1, 5);
         makeTeam(blue, 10, 5, 9);
 
-        List <Human> heroes = new ArrayList<>();
-        heroes.addAll(red);
+       
+        heroes.addAll(green);
         heroes.addAll(blue);
         heroes.sort(new Comparator<Human> () {
             @Override
@@ -35,29 +39,31 @@ public class Program {
             }
         });
         
-        System.out.println("blue team:");
-        blue.forEach(n -> System.out.println(n.getInfo()));
-        System.out.println("-----------------");
-        System.out.println("red team:");
-        red.forEach(n -> System.out.println(n.getInfo()));
-        System.out.println("-----------------");
-        System.out.println("all sorted by speed:");
-        heroes.forEach(n -> System.out.println(n.getInfo()));
+        // System.out.println("blue team:");
+        // blue.forEach(n -> System.out.println(n.getInfo()));
+        // System.out.println("-----------------");
+        // System.out.println("red team:");
+        // green.forEach(n -> System.out.println(n.getInfo()));
+        // System.out.println("-----------------");
+        // System.out.println("all sorted by speed:");
+        // heroes.forEach(n -> System.out.println(n.getInfo()));
 
-        System.out.println("-----------------");
-        System.out.println("BATTLE");
+        // System.out.println("-----------------");
+        // System.out.println("BATTLE");
 
         Scanner input = new Scanner(System.in);
         String flag = "";
         while (flag.equals("")){
+            View.view();
             for (Human human : heroes) {
-                if (human.team ==1) human.step(red, blue);
-                else human.step(blue, red);
+                if (human.team ==1) human.step(green, blue);
+                else human.step(blue, green);
             }
-            heroes.forEach(n-> System.out.println(n.getInfo()));
+            // heroes.forEach(n-> System.out.println(n.getInfo()));
             flag = input.nextLine();
         }
         input.close();
+
 
         
     }

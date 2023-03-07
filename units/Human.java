@@ -36,8 +36,8 @@ public abstract class Human implements GameInterface {
     
     @Override
     public String getInfo() {
-        return String.format("Name: %s  Hp: %f  Attack: %d  minDamage: %d  maxDamage: %d  defense: %d  Speed: %d Type: %s  xCoord: %s  yCoord: %s  team: %d",
-                this.name, this.hp, this.attack, this.minDamage, this.maxDamage, this.defense, this.speed, this.getClass().getSimpleName(), this.xCoord, this.yCoord, this.team);
+        return String.format("Type: %s Name: %s  Hp: %f  Attack: %d  minDamage: %d  maxDamage: %d  defense: %d  Speed: %d  xCoord: %d  yCoord: %d  team: %d  state: %s"  ,
+            this.getClass().getSimpleName(), this.name, this.hp, this.attack, this.minDamage, this.maxDamage, this.defense, this.speed, this.xCoord, this.yCoord, this.team, this.state);
     }
 
     public int getSpeed(){
@@ -47,6 +47,12 @@ public abstract class Human implements GameInterface {
     public double getHp(){
         return this.hp;
     }
+
+
+    public int[] getCoords() {
+        return new int[]{this.xCoord, this.yCoord};
+    }
+
 
     protected Human nearestHero (int x, int y, List<Human>lst){
         PointCoord myPos = new PointCoord(x, y);
@@ -72,6 +78,19 @@ public abstract class Human implements GameInterface {
         }
         if (hp >= maxHp) hp = maxHp;
     }
+
+
+    @Override
+    public String toString() {
+        return name +
+                " H:" + Math.round(hp) +
+                " D:" + defense +
+                " A:" + attack +
+                " Dmg:" + Math.round(Math.abs((minDamage+maxDamage)/2)) +
+                " " + state;
+    }
+
+
 }
 
 

@@ -37,7 +37,7 @@ public abstract class Magician extends Human {
 
         for (Human pers : lst) {
             double diffHp = pers.maxHp - pers.getHp();
-            if (diffHp > maxDiffHp) {
+            if (diffHp > maxDiffHp && !pers.state.equals("Die")) {
                 maxDiffHp = diffHp;
                 sickestHero = pers;
             }
