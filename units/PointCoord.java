@@ -14,5 +14,8 @@ public class PointCoord {
         return dist;
     }
 
+    public PointCoord choiceWay (PointCoord opponent){
+        return new PointCoord(this.x - opponent.x, this.y - opponent.y);
+    }
     
 }

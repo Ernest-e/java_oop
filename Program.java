@@ -74,6 +74,7 @@ public class Program {
 
 
 
+
         
     public static String getName(){
             return String.valueOf(Names.values()[new Random().nextInt(Names.values().length)]);
@@ -83,16 +84,16 @@ public class Program {
         for (int i = 0; i < units; i ++){
             switch (new Random().nextInt(minnum, maxnum)) {
                 case 1:
-                    list.add(new Robber(getName(), 0, i+1, 1));
+                    list.add(new Robber(getName(), 1, i+1, 1));
                     break;
                 case 2:
-                    list.add(new Sniper(getName(),  0, i+1, 1));
+                    list.add(new Sniper(getName(),  1, i+1, 1));
                     break;
                 case 3:
-                    list.add(new Wizard(getName(),  0, i+1, 1));
+                    list.add(new Wizard(getName(),  1, i+1, 1));
                     break;
                 case 4:
-                    list.add(new Peasant(getName(),  0, i+1, 1));
+                    list.add(new Peasant(getName(),  1, i+1, 1));
                     break;
                 case 5:
                     list.add(new Spearman(getName(), 10, i+1, 2 ));
